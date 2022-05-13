@@ -31,7 +31,7 @@ Route::get('/blog',[FrontendController::class,'blog'])->name('user.blog');
 
 Route::get('/blog-details',[FrontendController::class,'blog_details'])->name('user.blog-details');
 
-Route::get('/home',[HomeController::class,'redirect']);
+
 
 
 Route::middleware([
