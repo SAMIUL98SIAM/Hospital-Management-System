@@ -54,13 +54,24 @@
         </div>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link  {{Request::is('home') ? 'mm-active' : ''}}" href="{{route('home')}}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+
+
+      <li class="nav-item menu-items">
+        <a class="nav-link {{Request::is('admin/roles*') ? 'mm-active' : ''}}" href="{{route('admin.roles.index')}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-circle"></i>
+          </span>
+          <span class="menu-title">Roles</span>
+        </a>
+      </li>
+
       <li class="nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-icon">
