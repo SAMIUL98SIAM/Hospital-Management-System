@@ -58,7 +58,13 @@
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>
-          <span class="menu-title">Dashboard</span>
+          <span class="menu-title">
+              @role('admin')
+              Admin Dashboard
+              @else
+              Dashboard
+              @endrole
+          </span>
         </a>
       </li>
 

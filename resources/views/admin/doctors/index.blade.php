@@ -2,104 +2,62 @@
 
 @section('content')
 <div class="content-wrapper">
+    <div class="page-header">
+        <h1 class="page-title"> Doctor </h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('admin.doctors.create')}}" type="button" class="btn-shadow mr-3 btn btn-success">Create Doctor</a></li>
+          </ol>
+        </nav>
+    </div>
+
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Bordered table</h4>
-                <p class="card-description"> Add class <code>.table-bordered</code>
+                <h4 class="card-title">Doctor</h4>
                 </p>
                 <div class="table-responsive">
-                  <table class="table table-bordered">
+                  <table id="datatable" class="align-middle mb-0 table table-bordered">
                     <thead>
-                      <tr>
-                        <th> # </th>
-                        <th> First name </th>
-                        <th> Progress </th>
-                        <th> Amount </th>
-                        <th> Deadline </th>
-                      </tr>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Permission</th>
+                            <th class="text-center">Created At</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td> 1 </td>
-                        <td> Herman Beck </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $ 77.99 </td>
-                        <td> May 15, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 2 </td>
-                        <td> Messsy Adam </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $245.30 </td>
-                        <td> July 1, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 3 </td>
-                        <td> John Richards </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $138.00 </td>
-                        <td> Apr 12, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 4 </td>
-                        <td> Peter Meggik </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $ 77.99 </td>
-                        <td> May 15, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 5 </td>
-                        <td> Edward </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $ 160.25 </td>
-                        <td> May 03, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 6 </td>
-                        <td> John Doe </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $ 123.21 </td>
-                        <td> April 05, 2015 </td>
-                      </tr>
-                      <tr>
-                        <td> 7 </td>
-                        <td> Henry Tom </td>
-                        <td>
-                          <div class="progress">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </td>
-                        <td> $ 150.00 </td>
-                        <td> June 16, 2015 </td>
-                      </tr>
+                        @foreach ($doctors as $key=>$doctor)
+                        <tr>
+                            <td class="text-center text-muted">{{$key+1}}</td>
+                            <td class="text-center">{{$doctor->name}}</td>
+                            <td class="text-center">
+                                @if ($doctor->permissions->count() > 0)
+                                <span><div class="badge badge-info">{{$doctor->permissions->count()}}</div></span>
+                                @else
+                                <span><div class="badge badge-danger">No Permission Found : (</div></span>
+                                @endif
+                            </td>
+                            <td class="text-center">{{$doctor->created_at->diffForHumans()}}</td>
+                            <td class="text-center">
+                                <a href="{{route('admin.doctors.edit',$doctor->id)}}" class="btn btn-primary"><i class="fa fa-edit"><span> Edit</span></i></a>
+
+                                @if ($doctor->deletable == true)
+                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $doctor->id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                                <form id="delete-form-{{ $doctor->id }}"
+                                   action="{{ route('admin.doctors.destroy',$doctor->id) }}" method="POST"
+                                   style="display: none;">
+                                   @csrf()
+                                   @method('DELETE')
+                               </form>
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
-                  </table>
+                </table>
                 </div>
               </div>
             </div>
@@ -107,3 +65,15 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('admin/assets/js/sweetalert.js')}}"></script>
+<script>
+    $(document).ready(function() {
+    $('#datatable').DataTable();
+    } );
+</script>
+@endpush

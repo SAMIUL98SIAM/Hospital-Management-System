@@ -7,6 +7,7 @@ use App\Models\Admin\Role;
 use App\Models\Admin\Module;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
 {
@@ -17,7 +18,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //Gate::authorize('admin.roles.index');
+        Gate::authorize('admin.roles.index');
         $data['roles'] = Role::all();
         return view('admin.roles.index',$data);
     }
@@ -29,7 +30,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //Gate::authorize('admin.roles.create');
+        Gate::authorize('admin.roles.create');
         $data['modules'] = Module::all();
         return view('admin.roles.form',$data);
     }
@@ -42,7 +43,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //Gate::authorize('admin.roles.index');
+        Gate::authorize('admin.roles.index');
         $this->validate($request,[
             'name'=> 'required|unique:roles',
             'permissions'=>'required|array',
@@ -75,8 +76,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //Gate::authorize('admin.roles.edit');
-        // //Gate::authrize('admin.roles.edit');
+        Gate::authorize('admin.roles.edit');
         $data['modules'] = Module::all();
         return view('admin.roles.form',compact('role'),$data);
     }
@@ -90,7 +90,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //Gate::authorize('admin.roles.edit');
+        Gate::authorize('admin.roles.edit');
         $role->update([
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
@@ -108,7 +108,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //Gate::authorize('admin.roles.destroy');
+        Gate::authorize('admin.roles.destroy');
         if ($role->deletable) {
             $role->delete();
             notify()->error('Role Deleted','Success');
