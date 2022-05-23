@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Doctor;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('user.index');
+        $data['doctors'] = Doctor::all();
+        return view('user.index',$data);
     }
 
     public function doctors()
     {
-        return view('user.doctors');
+        $data['doctors'] = Doctor::all();
+        return view('user.doctors',$data);
     }
 
     public function contact()
@@ -24,7 +27,8 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('user.about-us');
+        $data['doctors'] = Doctor::all();
+        return view('user.about-us',$data);
     }
 
     public function blog()
