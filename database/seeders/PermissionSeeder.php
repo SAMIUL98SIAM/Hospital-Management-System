@@ -49,5 +49,33 @@ class PermissionSeeder extends Seeder
             'name' => 'Delete Role' ,
             'slug' => 'admin.roles.destroy'
         ]);
+
+
+
+        //Doctors
+        $moduleAppDoctor = Module::updateOrCreate(['name' => 'Doctor Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppDoctor->id ,
+            'name' => 'Access Doctor' ,
+            'slug' => 'admin.doctors.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppDoctor->id ,
+            'name' => 'Create Doctor' ,
+            'slug' => 'admin.doctors.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppDoctor->id ,
+            'name' => 'Edit Doctor' ,
+            'slug' => 'admin.doctors.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppDoctor->id ,
+            'name' => 'Delete Doctor' ,
+            'slug' => 'admin.doctors.destroy'
+        ]);
     }
 }

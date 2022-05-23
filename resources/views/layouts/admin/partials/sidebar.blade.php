@@ -79,6 +79,15 @@
       </li>
 
       <li class="nav-item menu-items">
+        <a class="nav-link {{Request::is('admin/doctors*') ? 'mm-active' : ''}}" href="{{route('admin.doctors.index')}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-doctor"></i>
+          </span>
+          <span class="menu-title">Doctors</span>
+        </a>
+      </li>
+
+      <li class="nav-item menu-items">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-icon">
             <i class="mdi mdi-laptop"></i>

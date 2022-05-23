@@ -2,7 +2,6 @@
 
 @push('css')
 <!-- Plugin css for this page -->
-<link rel="stylesheet" href="{{asset('admin')}}/assets/vendors/select2/select2.min.css">
 <link rel="stylesheet" href="{{asset('admin')}}/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
 <!-- End plugin css for this page -->
 @endpush
@@ -13,7 +12,7 @@
       <h3 class="page-title"> {{ isset($role) ? 'Edit' : 'Create New' }} Role </h3>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('admin.roles.index')}}" type="button" class="btn-shadow mr-3 btn btn-primary"><i class="fas fa-backspace"></i> Back to list</a></li>
+          <li class="breadcrumb-item"><a href="{{route('admin.roles.index')}}" type="button" class="btn-shadow mr-3 btn btn-primary"><span class="menu-icon"><i class="mdi mdi-backspace"></i></span> Back to list</a></li>
         </ol>
       </nav>
     </div>

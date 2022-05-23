@@ -22,9 +22,11 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
+                            <th class="text-center">Image</th>
                             <th class="text-center">Name</th>
-                            <th class="text-center">Permission</th>
-                            <th class="text-center">Created At</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Speciality</th>
+                            <th class="text-center">Room</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -32,20 +34,20 @@
                         @foreach ($doctors as $key=>$doctor)
                         <tr>
                             <td class="text-center text-muted">{{$key+1}}</td>
-                            <td class="text-center">{{$doctor->name}}</td>
                             <td class="text-center">
-                                @if ($doctor->permissions->count() > 0)
-                                <span><div class="badge badge-info">{{$doctor->permissions->count()}}</div></span>
-                                @else
-                                <span><div class="badge badge-danger">No Permission Found : (</div></span>
-                                @endif
+                                <div class="widget-content-left">
+                                    <img width="40" class="rounded-circle" src="{{ $doctor->getFirstMediaUrl('avatar') != null ? $doctor->getFirstMediaUrl('avatar') : config('app.placeholder').'160' }}" alt="Doctor Avatar">
+                                </div>
                             </td>
-                            <td class="text-center">{{$doctor->created_at->diffForHumans()}}</td>
+                            <td class="text-center">{{$doctor->name}}</td>
+                            <td class="text-center">{{$doctor->phone}}</td>
+                            <td class="text-center">{{$doctor->speciality->s_name}}</td>
+                            <td class="text-center">{{$doctor->room}}</td>
                             <td class="text-center">
-                                <a href="{{route('admin.doctors.edit',$doctor->id)}}" class="btn btn-primary"><i class="fa fa-edit"><span> Edit</span></i></a>
+                                <a href="{{route('admin.doctors.edit',$doctor->id)}}" class="btn btn-primary"><span class="menu-icon"><i class="mdi mdi-edit">Edit</i></span></a>
 
                                 @if ($doctor->deletable == true)
-                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $doctor->id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $doctor->id }})"><span class="menu-icon"><i class="mdi mdi-trash-alt"></i></span>Delete</button>
                                 <form id="delete-form-{{ $doctor->id }}"
                                    action="{{ route('admin.doctors.destroy',$doctor->id) }}" method="POST"
                                    style="display: none;">

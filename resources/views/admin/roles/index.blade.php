@@ -47,10 +47,10 @@
                             </td>
                             <td class="text-center">{{$role->created_at->diffForHumans()}}</td>
                             <td class="text-center">
-                                <a href="{{route('admin.roles.edit',$role->id)}}" class="btn btn-primary"><i class="fa fa-edit"><span> Edit</span></i></a>
+                                <a href="{{route('admin.roles.edit',$role->id)}}" class="btn btn-primary"><span class="menu-icon"><i class="mdi mdi-edit"> </i>Edit</span></a>
 
                                 @if ($role->deletable == true)
-                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $role->id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $role->id }})"><span class="menu-icon"><i class="mdi mdi-trash-alt"></i>Delete</span></button>
                                 <form id="delete-form-{{ $role->id }}"
                                    action="{{ route('admin.roles.destroy',$role->id) }}" method="POST"
                                    style="display: none;">
