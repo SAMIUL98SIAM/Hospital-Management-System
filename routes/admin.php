@@ -17,8 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
 Route::resource('roles',RoleController::class);
 Route::resource('doctors',DoctorController::class);
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+]);

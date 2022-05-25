@@ -54,7 +54,7 @@
         </div>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link  {{Request::is('home') ? 'mm-active' : ''}}" href="{{route('home')}}">
+        <a class="nav-link  {{Request::is('admin/dashboard') ? 'mm-active' : ''}}" href="{{route('admin.dashboard')}}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>

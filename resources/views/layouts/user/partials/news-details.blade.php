@@ -4,8 +4,13 @@
         <div class="col-lg-8">
         <nav aria-label="Breadcrumb">
             <ol class="breadcrumb bg-transparent py-0 mb-5">
-            <li class="breadcrumb-item"><a href="{{route('user.home')}}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('user.blog')}}">Blog</a></li>
+                @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
+                <li class="breadcrumb-item"><a class="nav-link" href="{{route('user.dashboard')}}">Home</a></li>
+                @else
+                <li class="breadcrumb-item"><a class="nav-link"  href="/">Home</a></li>
+                @endif
+
+            <li class="breadcrumb-item"><a href="{{route('blog')}}">Blog</a></li>
             <li class="breadcrumb-item active" aria-current="page">List of Countries without Coronavirus case</li>
             </ol>
         </nav>

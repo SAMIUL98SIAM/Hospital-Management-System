@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'status' => true
         ]);
 
-        // Create user
+        // Create Manager
         $userRole = Role::where('slug','manager')->first();
         User::updateOrCreate([
             'role_id' => $userRole->id,
@@ -38,5 +38,15 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'status' => false
         ]);
+
+        //Create User
+        User::updateOrCreate([
+            'usertype'=> 'user',
+            'name' => 'Jobbor Ali',
+            'email' => 'jobbor@mail.com',
+            'password' => Hash::make('password'),
+            'status' => false
+        ]);
+
     }
 }

@@ -8,36 +8,11 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function dashboard()
     {
         $data['doctors'] = Doctor::all();
-        return view('user.index',$data);
+        return view('user.home',$data);
     }
 
-    public function doctors()
-    {
-        $data['doctors'] = Doctor::all();
-        return view('user.doctors',$data);
-    }
 
-    public function contact()
-    {
-        return view('user.contact');
-    }
-
-    public function about()
-    {
-        $data['doctors'] = Doctor::all();
-        return view('user.about-us',$data);
-    }
-
-    public function blog()
-    {
-        return view('user.blog');
-    }
-
-    public function blog_details()
-    {
-        return view('user.blog-details');
-    }
 }

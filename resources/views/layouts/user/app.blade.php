@@ -22,6 +22,13 @@
         <link rel="stylesheet" href="{{asset('user/assets/vendor/animate/animate.css')}}">
 
         <link rel="stylesheet" href="{{asset('user/assets/css/theme.css')}}">
+
+        <!-- Izitoast --->
+        <link rel="stylesheet" href="{{asset('admin/izitoast/css/iziToast.css')}}">
+        <!-- Izitoast /-->
+        @stack('css')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
@@ -59,4 +66,8 @@
     <script src="{{asset('user/assets/vendor/wow/wow.min.js')}}"></script>
 
     <script src="{{asset('user/assets/js/theme.js')}}"></script>
+    <!-- Izitoast --->
+    <script src="{{asset('admin/izitoast/js/iziToast.js')}}"></script>
+    <!-- Izitoast/ -->
+    @include('vendor.lara-izitoast.toast')
 </html>

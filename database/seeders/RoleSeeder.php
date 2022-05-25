@@ -23,5 +23,6 @@ class RoleSeeder extends Seeder
 
 
         Role::updateOrCreate(['name' => 'Manager', 'slug' => 'manager', 'deletable' => false]);
+
     }
 }

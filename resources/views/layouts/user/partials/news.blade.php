@@ -3,7 +3,11 @@
         <div class="container text-center wow fadeInUp">
             <nav aria-label="Breadcrumb">
             <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
-                <li class="breadcrumb-item"><a href="{{route('user.home')}}">Home</a></li>
+                @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
+                <li class="breadcrumb-item"><a class="nav-link" href="{{route('user.dashboard')}}">Home</a></li>
+                @else
+                <li class="breadcrumb-item"><a class="nav-link"  href="/">Home</a></li>
+                @endif
                 <li class="breadcrumb-item active" aria-current="page">Blog</li>
             </ol>
             </nav>
@@ -28,7 +32,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">List of Countries without Coronavirus case</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">List of Countries without Coronavirus case</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -53,7 +57,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">What is the impact of eating too much sugar?</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">What is the impact of eating too much sugar?</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -78,7 +82,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">Shifting goalposts: Research in the time of the coronavirus</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">Shifting goalposts: Research in the time of the coronavirus</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -102,7 +106,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">What are the nonmedical factors most closely linked to death risk?</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">What are the nonmedical factors most closely linked to death risk?</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -126,7 +130,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">Do gut bacteria contribute to ethnic health disparities</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">Do gut bacteria contribute to ethnic health disparities</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -150,7 +154,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">The Recovery Room: News beyond the pandemic</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">The Recovery Room: News beyond the pandemic</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -174,7 +178,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">Racism in mental healthcare: An invisible barrier</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">Racism in mental healthcare: An invisible barrier</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">
@@ -199,7 +203,7 @@
                   </a>
                 </div>
                 <div class="body">
-                  <h5 class="post-title"><a href="{{route('user.blog-details')}}">COVID-19 live updates: Total number of cases passes 11.6 million</a></h5>
+                  <h5 class="post-title"><a href="{{route('blog-details')}}">COVID-19 live updates: Total number of cases passes 11.6 million</a></h5>
                   <div class="site-info">
                     <div class="avatar mr-2">
                       <div class="avatar-img">

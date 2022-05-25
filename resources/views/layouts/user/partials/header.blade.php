@@ -40,24 +40,41 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{route('user.home')}}">Home</a>
+            @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
+              <li class="breadcrumb-item"><a class="nav-link" href="{{route('user.dashboard')}}">Home</a></li>
+              @else
+              <li class="breadcrumb-item"><a class="nav-link"  href="/">Home</a></li>
+              @endif
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('about-us')}}">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.about-us')}}">About Us</a>
+              <a class="nav-link" href="{{route('doctors')}}">Doctors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.doctors')}}">Doctors</a>
+              <a class="nav-link" href="{{route('blog')}}">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.blog')}}">News</a>
+              <a class="nav-link" href="{{route('contact')}}">Contact</a>
             </li>
+            @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
             <li class="nav-item">
-              <a class="nav-link" href="{{route('user.contact')}}">Contact</a>
+
+                <button type="button" tabindex="0" class="btn preview-subject mb-1" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</button>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
-            </li>
+
+            @else
+              <li class="nav-item">
+                <a class="btn btn-primary ml-lg-3" href="{{route('frontend.login')}}">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="btn btn-primary ml-lg-3" href="{{route('frontend.register')}}">Register</a>
+              </li>
+            @endif
+
           </ul>
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
