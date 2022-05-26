@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Admin\Appointment;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\Doctor;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use PhpParser\Node\Stmt\ElseIf_;
 
 class HomeController extends Controller
 {
@@ -119,25 +122,29 @@ class HomeController extends Controller
         }
     }
 
+    public function appointment(Request $request)
+    {
+        $data = new Appointment();
+        $data->name = $request->name ;
+        $data->email = $request->email ;
+        $data->date = $request->date ;
+        $data->phone = $request->number ;
+        $data->message = $request->message ;
+        $data->doctor = $request->doctor ;
+        $data->status = 'In Progress' ;
 
+        if(Auth::id())
+        {
+            $data->user_id = Auth::user()->id ;
+        }
+        // elseif(!Auth::id())
+        // {
+        //     notify()->error('Please Sign in your acount', 'Error');
+        // }
+        $data->save();
+        notify()->success('Appointment have registered', 'Success');
+        return redirect()->back();
 
+    }
 
-    // public function redirect()
-    // {
-    //     if(Auth::id())
-    //     {
-    //         if(Auth::user()->usertype== 'user')
-    //         {
-    //             return view('user.home');
-    //         }
-    //         elseif(Auth::user()->usertype== 'admin')
-    //         {
-    //             return view('admin.home');
-    //         }
-    //     }
-    //     else
-    //     {
-    //         return redirect()->back();
-    //     }
-    // }
 }

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
 Route::resource('roles',RoleController::class);
+
 Route::resource('doctors',DoctorController::class);
 
 
