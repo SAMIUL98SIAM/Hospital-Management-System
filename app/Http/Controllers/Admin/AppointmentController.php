@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Appointment;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Notification;
 
 class AppointmentController extends Controller
 {
@@ -105,4 +107,33 @@ class AppointmentController extends Controller
         notify()->error('Appointment Cancelled.', 'Error');
         return redirect()->back();
     }
+
+    public function email($id)
+    {
+        $appointmentEmail = Appointment::find($id);
+        return view('admin.appointments.email',compact('appointmentEmail'));
+    }
+
+    public function email_send(Request $request,$id)
+    {
+        $appointmentEmail = Appointment::find($id);
+        $details = [
+            'greeting' => $request->greeting ,
+
+            'body' => $request->body ,
+
+            'actiontext' => $request->actiontext ,
+
+            'actionurl' => $request->actionurl ,
+
+            'endpart' => $request->endpart
+        ];
+
+        Notification::send($appointmentEmail,new
+        SendEmailNotification($details));
+
+        notify()->success('Email send Successfully.', 'Success');
+        return redirect()->back();
+    }
+
 }

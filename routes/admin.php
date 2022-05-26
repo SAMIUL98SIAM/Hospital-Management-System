@@ -27,7 +27,13 @@ Route::resource('doctors',DoctorController::class);
 Route::resource('appointments',AppointmentController::class)->only(['index']);
 
 Route::get('/approve/{id}',[AppointmentController::class,'approve'])->name('appointment.approve');
+
 Route::get('/cancel/{id}',[AppointmentController::class,'cancel'])->name('appointment.cancel');
+
+Route::get('/email/{id}',[AppointmentController::class,'email'])->name('appointment.email');
+
+Route::post('/email/send/{id}',[AppointmentController::class,'email_send'])->name('appointment.email.send');
+
 
 Route::middleware([
     'auth:sanctum',

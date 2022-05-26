@@ -49,6 +49,9 @@
                                 <a class="btn btn-danger" href="{{route('admin.appointment.cancel',$appointment->id)}}">Cancel</a>
                                 @endif
 
+
+                                <a class="btn btn-info" href="{{route('admin.appointment.email',$appointment->id)}}">Email</a>
+
                             </td>
                         </tr>
                         @endforeach
