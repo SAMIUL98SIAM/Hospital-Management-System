@@ -18,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard',[FrontendController::class,'dashboard'])->name('dashboard');
 
+Route::get('/appointment', [FrontendController::class, 'appointment'])->name('appointment');
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ]);
+Route::get('/appointment-cancel/{id}', [FrontendController::class, 'appointment_cancel'])->name('appointment.cancel');
 

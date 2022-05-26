@@ -41,14 +41,9 @@
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <input type="submit" value="Verify" class="btn btn-block btn-success">
-
                     </div>
                 </div>
             </form>
         </div>
-      </div>
-
-      <div class="maps-container wow fadeInUp">
-        <div id="google-maps"></div>
     </div>
 @endsection

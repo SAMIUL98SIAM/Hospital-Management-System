@@ -30,7 +30,7 @@ class UserLoginController extends Controller
             return redirect()->back();
        }
        if(Auth::attempt(['email'=>$email,'password'=>$password])) {
-           return redirect()->route('frontend.login');
+           return redirect()->route('user.dashboard');
        }
    }
 

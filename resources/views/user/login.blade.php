@@ -55,8 +55,4 @@
         </div>
         </div>
       </div>
-
-      <div class="maps-container wow fadeInUp">
-        <div id="google-maps"></div>
-    </div>
 @endsection

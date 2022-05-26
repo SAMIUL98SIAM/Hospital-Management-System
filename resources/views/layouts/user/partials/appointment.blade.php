@@ -2,7 +2,7 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Make an Appointment</h1>
 
-      <form action="{{route('frontend.user.appointment')}}" class="main-form" method="POST">
+      <form action="{{route('appointment.store')}}" class="main-form" method="POST">
         @csrf
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">

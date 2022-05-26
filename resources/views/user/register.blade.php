@@ -14,7 +14,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Registration</li>
             </ol>
             </nav>
-            <h1 class="font-weight-normal">Customer Registration</h1>
+            <h1 class="font-weight-normal">Registration</h1>
         </div> <!-- .container -->
         </div> <!-- .banner-section -->
     </div> <!-- .page-banner -->
@@ -67,9 +67,5 @@
             </form>
         </div>
         </div>
-      </div>
-
-      <div class="maps-container wow fadeInUp">
-        <div id="google-maps"></div>
     </div>
 @endsection

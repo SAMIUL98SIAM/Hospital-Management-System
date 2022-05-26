@@ -59,8 +59,10 @@
             </li>
             @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
             <li class="nav-item">
-
-                <button type="button" tabindex="0" class="btn preview-subject mb-1" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</button>
+                <li class="nav-item">
+                    <a class="btn btn-success ml-lg-3" href="{{route('user.appointment')}}">My Appointment's</a>
+                </li>
+                <button type="button" tabindex="0" class="btn btn-danger ml-lg-3" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</button>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
