@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\DoctorController;
 use App\Http\Controllers\Admin\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,10 @@ Route::resource('roles',RoleController::class);
 
 Route::resource('doctors',DoctorController::class);
 
+Route::resource('appointments',AppointmentController::class)->only(['index']);
+
+Route::get('/approve/{id}',[AppointmentController::class,'approve'])->name('appointment.approve');
+Route::get('/cancel/{id}',[AppointmentController::class,'cancel'])->name('appointment.cancel');
 
 Route::middleware([
     'auth:sanctum',

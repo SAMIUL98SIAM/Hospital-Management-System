@@ -77,5 +77,14 @@ class PermissionSeeder extends Seeder
             'name' => 'Delete Doctor' ,
             'slug' => 'admin.doctors.destroy'
         ]);
+
+
+        //Appointments
+        $moduleAppAppointment = Module::updateOrCreate(['name' => 'Appointment Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAppointment->id ,
+            'name' => 'Access Doctor' ,
+            'slug' => 'admin.appointments.index'
+        ]);
     }
 }
