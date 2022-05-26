@@ -6,9 +6,9 @@
             @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
               <li class="breadcrumb-item"><a class="nav-link" href="{{route('user.dashboard')}}">Home</a></li>
               @else
-              <li class="breadcrumb-item"><a class="nav-link"  href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
               @endif
-            <li class="breadcrumb-item active" aria-current="page">Doctors</li>
+             <li class="breadcrumb-item active" aria-current="page">Doctors</li>
           </ol>
         </nav>
         <h1 class="font-weight-normal">Our Doctors</h1>

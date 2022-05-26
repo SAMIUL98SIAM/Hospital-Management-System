@@ -7,9 +7,9 @@
             <nav aria-label="Breadcrumb">
             <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
                 @if (@Auth::user()->id != Null && @Auth::user()->usertype=='user')
-              <li class="breadcrumb-item"><a class="nav-link" href="{{route('user.dashboard')}}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('user.dashboard')}}">Home</a></li>
               @else
-              <li class="breadcrumb-item"><a class="nav-link"  href="/">Home</a></li>
+              <li class="breadcrumb-item"><a  href="/">Home</a></li>
               @endif
                 <li class="breadcrumb-item active" aria-current="page">Registration</li>
             </ol>
