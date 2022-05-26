@@ -37,17 +37,18 @@
                             <td class="text-center">{{$appointment->message}}</td>
                             <td class="text-center">{{$appointment->status}}</td>
                             <td class="text-center">
-                                {{-- @if ($appointment->deletable == true)
-                                <button type="button" class="btn btn-danger" onclick="deleteData({{ $appointment->id }})"><span class="menu-icon"><i class="mdi mdi-trash-alt"></i></span>Delete</button>
-                                <form id="delete-form-{{ $appointment->id }}"
-                                   action="{{ route('admin.appointments.destroy',$appointment->id) }}" method="POST"
-                                   style="display: none;">
-                                   @csrf()
-                                   @method('DELETE')
-                               </form>
-                                @endif --}}
+                                @if ($appointment->status == 'Approved')
+                                <a style="pointer-events: none;" class="btn btn-light" href="{{route('admin.appointment.approve',$appointment->id)}}">Approve</a>
+                                @else
                                 <a class="btn btn-primary" href="{{route('admin.appointment.approve',$appointment->id)}}">Approve</a>
+                                @endif
+
+                                @if ($appointment->status == 'Cancelled')
+                                <a style="pointer-events: none;" class="btn btn-light" href="{{route('admin.appointment.cancel',$appointment->id)}}">Cancel</a>
+                                @else
                                 <a class="btn btn-danger" href="{{route('admin.appointment.cancel',$appointment->id)}}">Cancel</a>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach
