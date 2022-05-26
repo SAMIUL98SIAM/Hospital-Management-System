@@ -43,7 +43,7 @@ Route::get('/email-verify', [HomeController::class, 'emailVerify'])->name('front
 
 Route::post('/email-verify-store', [HomeController::class, 'emailVerifyStore'])->name('frontend.user.email_verify_store');
 
-Route::post('/appointment-store', [FrontendController::class, 'appointment_store'])->name('appointment.store');
+//Route::post('/appointment-store', [FrontendController::class, 'appointment_store'])->name('appointment.store');
 
 Route::middleware([
     'auth:sanctum',

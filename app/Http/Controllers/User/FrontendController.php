@@ -33,6 +33,14 @@ class FrontendController extends Controller
     }
 
 
+    public function appointment_cancel($id)
+    {
+        $data = Appointment::find($id);
+        $data->delete();
+        notify()->success('Appointment Cancel Successfully', 'Success');
+        return redirect()->back();
+    }
+
     public function appointment_store(Request $request)
     {
         if(Auth::id())
@@ -55,14 +63,5 @@ class FrontendController extends Controller
         }
         return redirect()->back();
     }
-
-    public function appointment_cancel($id)
-    {
-        $data = Appointment::find($id);
-        $data->delete();
-        notify()->success('Appointment Cancel Successfully', 'Success');
-        return redirect()->back();
-    }
-
 
 }

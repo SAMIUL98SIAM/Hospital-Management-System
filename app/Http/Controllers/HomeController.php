@@ -122,28 +122,28 @@ class HomeController extends Controller
         }
     }
 
-    public function appointment_store(Request $request)
-    {
-        if(Auth::id())
-        {
-            $data = new Appointment();
-            $data->name = $request->name ;
-            $data->email = $request->email ;
-            $data->date = $request->date ;
-            $data->phone = $request->number ;
-            $data->message = $request->message ;
-            $data->doctor = $request->doctor ;
-            $data->status = 'In Progress' ;
-            $data->user_id = Auth::user()->id ;
-            $data->save();
-            notify()->success('Appointment have registered', 'Success');
-        }
-        else
-        {
-            notify()->error('Please Sign in your acount', 'Error');
-        }
-        return redirect()->route('user.appointment');
-    }
+    // public function appointment_store(Request $request)
+    // {
+    //     if(Auth::id())
+    //     {
+    //         $data = new Appointment();
+    //         $data->name = $request->name ;
+    //         $data->email = $request->email ;
+    //         $data->date = $request->date ;
+    //         $data->phone = $request->number ;
+    //         $data->message = $request->message ;
+    //         $data->doctor = $request->doctor ;
+    //         $data->status = 'In Progress' ;
+    //         $data->user_id = Auth::user()->id ;
+    //         $data->save();
+    //         notify()->success('Appointment have registered', 'Success');
+    //     }
+    //     else
+    //     {
+    //         notify()->error('Please Sign in your acount', 'Error');
+    //     }
+    //     return redirect()->route('user.appointment');
+    // }
 
 
 }

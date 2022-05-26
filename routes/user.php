@@ -22,3 +22,5 @@ Route::get('/appointment', [FrontendController::class, 'appointment'])->name('ap
 
 Route::get('/appointment-cancel/{id}', [FrontendController::class, 'appointment_cancel'])->name('appointment.cancel');
 
+
+Route::post('/appointment-store', [FrontendController::class, 'appointment_store'])->name('appointment.store');
